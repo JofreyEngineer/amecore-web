@@ -5,9 +5,7 @@ import com.jeff.db_connector.model.Customer;
 import com.jeff.db_connector.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HomeController {
@@ -34,7 +32,7 @@ public class HomeController {
         return ResponseEntity.ok(customerRepository.findAllByStatus("A"));
     }
 
-    @GetMapping("/customers/create")
+    @PostMapping("/customers/create")
     public ResponseEntity<?> createCustomer(@RequestBody CustomerRequest request) {
         Customer newCustomer = new Customer();
         newCustomer.setFirstname(request.getFirstname());
@@ -45,4 +43,13 @@ public class HomeController {
         Customer savedCustomer = customerRepository.save(newCustomer);
         return ResponseEntity.ok(savedCustomer);
     }
+
+    @GetMapping("/customers/{id}")
+    public ResponseEntity<?> getSingleCustomer(@PathVariable("id") Long id) {
+       Customer customer = customerRepository.findById(id).orElse(null);
+        return ResponseEntity.ok(customer);
+    }
+
+
+
 }
