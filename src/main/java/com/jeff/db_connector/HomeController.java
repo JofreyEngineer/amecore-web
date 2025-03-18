@@ -11,6 +11,11 @@ public class HomeController {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @GetMapping("/")
+    public ResponseEntity<?> home() {
+        return ResponseEntity.ok("Welcome to Our Platform");
+    }
+
     @GetMapping("/greeting")
     public ResponseEntity<?> greeting() {
         return ResponseEntity.ok("Hello world");
