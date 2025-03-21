@@ -9,7 +9,7 @@ import java.util.UUID;
 @Table(name = "payment")
 @Entity
 public class payment {
-
+    @Id
     private String paymentId;
     private String sender;
     private String recipient;

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface paymentRepository<PaymentRequest> extends JpaRepository<payment, String> {
+public interface paymentRepository extends JpaRepository<payment, String> {
     List<PaymentRequest> findAllByStatus(String status);
 
 }
