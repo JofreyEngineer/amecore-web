@@ -30,12 +30,11 @@ public class HomeController {
     }
 
 
-
     @GetMapping("/payment")
-    public ResponseEntity<?> getpayment() {
-        AtomicReference<Object> PaymentRequest = null;
-        return ResponseEntity.ok(PaymentRequest);
+    public ResponseEntity<?> getPayment() {
+        return ResponseEntity.ok(customerRepository.findAll());
     }
+
 
     @GetMapping("/customers/active")
     public ResponseEntity<?> getActiveCustomers() {
