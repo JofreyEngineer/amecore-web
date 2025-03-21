@@ -17,30 +17,5 @@ public class PaymentRequest {
     private String currency;
     private String status;
 
-    public PaymentRequest() {
-        this.paymentId = UUID.randomUUID().toString();
-    }
 
-    public PaymentRequest(String sender, String recipient, double amount, String currency) {
-        this();
-        this.sender = sender;
-        this.recipient = recipient;
-        this.amount = amount;
-        this.currency = currency;
-        this.status = "Pending";
-    }
-
-    public void processPayment() {
-        this.status = "Completed";
-    }
-
-    // Getters and Setters
-    public String getPaymentId() { return paymentId; }
-    public String getSender() { return sender; }
-    public String getRecipient() { return recipient; }
-    public double getAmount() { return amount; }
-    public String getCurrency() { return currency; }
-    public String getStatus() { return status; }
-
-    public void setStatus(String status) { this.status = status; }
 }
