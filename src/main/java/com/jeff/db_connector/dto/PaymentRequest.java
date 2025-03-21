@@ -1,83 +1,46 @@
 package com.jeff.db_connector.dto;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import java.util.UUID;
 
+@Table(name = "payment")
+@Entity
 public class PaymentRequest {
+
+    @Id
+    private String paymentId;
+    private String sender;
+    private String recipient;
     private double amount;
     private String currency;
-    private String paymentMethod;
-    private String recipient;
-    private String reference;
-    private String description;
+    private String status;
 
-    // Constructor
-    public PaymentRequest(double amount, String currency, String paymentMethod, String recipient, String reference, String description) {
+    public PaymentRequest() {
+        this.paymentId = UUID.randomUUID().toString();
+    }
+
+    public PaymentRequest(String sender, String recipient, double amount, String currency) {
+        this();
+        this.sender = sender;
+        this.recipient = recipient;
         this.amount = amount;
         this.currency = currency;
-        this.paymentMethod = paymentMethod;
-        this.recipient = recipient;
-        this.reference = reference;
-        this.description = description;
+        this.status = "Pending";
+    }
+
+    public void processPayment() {
+        this.status = "Completed";
     }
 
     // Getters and Setters
-    public double getAmount() {
-        return amount;
-    }
+    public String getPaymentId() { return paymentId; }
+    public String getSender() { return sender; }
+    public String getRecipient() { return recipient; }
+    public double getAmount() { return amount; }
+    public String getCurrency() { return currency; }
+    public String getStatus() { return status; }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public String getRecipient() {
-        return recipient;
-    }
-
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
-    }
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "PaymentRequest{" +
-                "amount=" + amount +
-                ", currency='" + currency + '\'' +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                ", recipient='" + recipient + '\'' +
-                ", reference='" + reference + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
+    public void setStatus(String status) { this.status = status; }
 }
-
