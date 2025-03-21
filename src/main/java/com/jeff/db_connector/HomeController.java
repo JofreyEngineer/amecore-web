@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 @RestController
 public class HomeController {
     @Autowired
@@ -31,7 +33,8 @@ public class HomeController {
 
     @GetMapping("/payment")
     public ResponseEntity<?> getpayment() {
-        return ResponseEntity.ok(getpayment());
+        AtomicReference<Object> PaymentRequest = null;
+        return ResponseEntity.ok(PaymentRequest);
     }
 
     @GetMapping("/customers/active")
