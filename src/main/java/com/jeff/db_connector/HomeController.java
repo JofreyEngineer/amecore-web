@@ -27,6 +27,13 @@ public class HomeController {
         return ResponseEntity.ok(customerRepository.findAll());
     }
 
+
+
+    @GetMapping("/payment")
+    public ResponseEntity<?> getpayment() {
+        return ResponseEntity.ok(getpayment());
+    }
+
     @GetMapping("/customers/active")
     public ResponseEntity<?> getActiveCustomers() {
         return ResponseEntity.ok(customerRepository.findAllByStatus("A"));
