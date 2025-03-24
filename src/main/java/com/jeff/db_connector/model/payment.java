@@ -1,15 +1,15 @@
 package com.jeff.db_connector.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.springframework.data.annotation.Id;
 
 import java.util.UUID;
 
 @Table(name = "payment")
 @Entity
 public class payment {
-    @Id
+   @Id
     private String paymentId;
     private String sender;
     private String recipient;
