@@ -9,8 +9,6 @@ import java.util.UUID;
 @Table(name = "payment")
 @Entity
 public class payment {
-   @Id
-    private String paymentId;
     private String sender;
     private String recipient;
     private double amount;
@@ -18,7 +16,7 @@ public class payment {
     private String status;
 
     public void Payment() {
-        this.paymentId = UUID.randomUUID().toString();
+        String paymentId = UUID.randomUUID().toString();
     }
 }
 
